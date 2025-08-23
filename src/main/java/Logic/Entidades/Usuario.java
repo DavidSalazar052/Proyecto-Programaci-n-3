@@ -12,6 +12,8 @@ public abstract class Usuario {
         this.nombre = nombre;
         this.rol = rol;
     }
+    public Usuario(){super();}
+
     public Usuario(String id, String apellido, String nombre) {
         this(id, apellido, nombre, "");
     }

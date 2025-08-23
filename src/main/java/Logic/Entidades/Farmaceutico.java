@@ -6,10 +6,10 @@ public class Farmaceutico extends Usuario{
         super(id, apellido, nombre, rol);
         this.contrasena = contrasena;
     }
+    public Farmaceutico(){super();}
+
     @Override
-    public String getRol() {
-        return rol;
-    }
+    public String getRol() {return rol;}
     @Override
     public void mostrarDatos() {
         System.out.println("ID: " + id);

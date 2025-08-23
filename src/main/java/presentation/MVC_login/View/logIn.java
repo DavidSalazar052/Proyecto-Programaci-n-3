@@ -1,11 +1,13 @@
-package View.LogIn;
+package presentation.MVC_login.View;
+
+import presentation.MVC_login.Controller;
+import presentation.MVC_login.Model_Log;
 
 import javax.swing.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class logIn implements PropertyChangeListener {
-
     private JTextField UsuarioIDtf;
     private JPasswordField ContrasenaF;
     private JButton INGRESARButton;
