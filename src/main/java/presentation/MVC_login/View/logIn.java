@@ -14,6 +14,10 @@ public class logIn implements PropertyChangeListener {
     private JButton REGISTRARButton;
     private JPanel logInPanel;
 
+    //MVC
+    Controller controller;
+    Model_Log model;
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
 
@@ -42,4 +46,14 @@ public class logIn implements PropertyChangeListener {
     private boolean verificarCredenciales(String usuarioID, String contrasena) {
         return true;
     }
+
+    public void setModel(Model_Log model){
+        this.model = model;
+        model.addPropertyChangeListener(this);
+    }
+    public void setController(Controller controller){
+    this.controller = controller;
+    }
+
+
 }

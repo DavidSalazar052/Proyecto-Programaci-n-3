@@ -6,7 +6,7 @@ public class Medico extends Usuario{
         super(id, apellido, nombre, rol);
         this.contasenna = contasenna;
     }
-
+    public Medico(){super();}
     @Override
     public String getRol() {return rol;}
 

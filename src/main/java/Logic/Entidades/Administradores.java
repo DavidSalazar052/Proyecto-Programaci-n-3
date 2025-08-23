@@ -2,9 +2,11 @@ package Logic.Entidades;
 //El se encarga de añadir los usuarios en el sistemas
 public class Administradores extends Usuario {
     private String contrasenaADMIN;
+
     public Administradores(String id, String apellido, String nombre, String rol) {
         super(id, apellido, nombre, rol);
     }
+    public Administradores(){super();}
 
     @Override
     public String getRol() {return rol;}
