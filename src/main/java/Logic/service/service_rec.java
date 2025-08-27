@@ -1,6 +1,8 @@
 package Logic.service;
+
+import Logic.Entidades.Usuario;
 import Logic.Medicamentos.Receta;
-import data.data_receta;
+import data.data;
 
 public class service_rec {
     private static service_rec instance;
@@ -11,10 +13,12 @@ public class service_rec {
         }
         return instance;
     }
-    private data_receta receta;
+    private data receta;
 
-    private service_rec() { receta = new data_receta();}
+    private service_rec() { receta = new data();}
 
     // ==================Receta================//
 
 }
+
+

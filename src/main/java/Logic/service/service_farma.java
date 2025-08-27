@@ -1,7 +1,6 @@
 package Logic.service;
 import Logic.Entidades.Farmaceutico;
-import Logic.Entidades.Usuario;
-import data.data_Farmaceutico;
+import data.data;
 
 public class service_farma {
     private static service_farma instance;
@@ -29,7 +28,7 @@ public class service_farma {
         }
     }
     public Farmaceutico read(Farmaceutico e) throws Exception {
-        Farmaceutico result = farmaceutico.getFarmaceuticos().stream()
+        Farmaceutico result = (Farmaceutico) farmaceutico.getUsuarios().stream()
                 .filter(i -> i.getId().equals(e.getId()))
                 .findFirst()
                 .orElse(null);

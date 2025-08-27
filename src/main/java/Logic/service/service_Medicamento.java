@@ -1,8 +1,6 @@
 package Logic.service;
-import Logic.Entidades.Administradores;
 import Logic.Medicamentos.medicamento;
-
-import data.data_medicamentos;
+import data.data;
 
 public class service_Medicamento {
     private static service_Medicamento Theinstance;

@@ -29,6 +29,7 @@ public class Receta {
             medicinas.add(med);
         }
     }
+    public String getId() {return id;}
 
 
 
