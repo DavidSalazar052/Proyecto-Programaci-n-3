@@ -4,6 +4,12 @@ import java.util.*;
 import Logic.Entidades.Medico;
 import Logic.Entidades.Paciente;
 
+
+//Relacionada con paciente y medico, View de Recetas
+// En el model de la pantalla deberia de haber una receta
+// El paciente puede ligarse a las recetas, el sistemas sale logiado (Colocar el ID del metico arriba), en
+// un objeto seccion se guarda el medico que esta logiado
+
 public class Receta {
     String id;
     Paciente paciente;

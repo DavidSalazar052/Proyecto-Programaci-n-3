@@ -114,8 +114,7 @@ public class View_Pacientes implements PropertyChangeListener {
             case ModelPac.CURRENT:
                 id_JTextField.setText(model.getCurrent().getId());
                 nombrePaciente_JtextField.setText(model.getCurrent().getNombre());
-                id_JTextField.setBackground(null);
-                nombrePaciente_JtextField.setBackground(null);
+               // controller.clear();
 
         }
         this.Jpanel.revalidate();
@@ -127,18 +126,17 @@ public class View_Pacientes implements PropertyChangeListener {
            valid = false;
            id_JTextField.setBackground(Color.RED);
            JOptionPane.showMessageDialog(Jpanel,"ID necesario");
-           id_JTextField.setBackground(null);
+           controller.clear();
            id_JTextField.setToolTipText("ID necesario");
        }
        if (nombrePaciente_JtextField.getText().isEmpty()){
               valid = false;
               nombrePaciente_JtextField.setBackground(Color.RED);
               JOptionPane.showMessageDialog(Jpanel,"Nombre necesario");
-              nombrePaciente_JtextField.setBackground(null);
+              //controller.clear();
               nombrePaciente_JtextField.setToolTipText("Nombre necesario");
        }else {
-              nombrePaciente_JtextField.setBackground(null);
-              id_JTextField.setBackground(null);
+             //controller.clear();
        }
        return valid;
 
@@ -150,13 +148,12 @@ public class View_Pacientes implements PropertyChangeListener {
             valid = false;
             NombreBusqueda_JtextField.setBackground(Color.RED);
             JOptionPane.showMessageDialog(Jpanel,"ID necesario");
-            NombreBusqueda_JtextField.setBackground(null);
+            //controller.clear();
             NombreBusqueda_JtextField.setToolTipText("ID necesario");
         }
         else {
-        nombrePaciente_JtextField.setBackground(null);
-        id_JTextField.setBackground(null);
-    }
+        //controller.clear();
+        }
         return valid;
     }
 
