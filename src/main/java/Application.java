@@ -1,5 +1,6 @@
 import javax.swing.*;
 
+
 import presentation.MVC_Pacientes.ModelPac;
 import presentation.MVC_Pacientes.ContPac;
 import presentation.MVC_Pacientes.View_Pacientes;
@@ -16,8 +17,10 @@ public class Application {
             ModelPac model = new ModelPac();
             ContPac controller = new ContPac(view, model);
 
+
+
             JFrame window = new JFrame();
-            window.setSize(800,600);
+            window.setSize(1000,700);
             window.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
             window.setTitle("Personas");
             window.setContentPane(view.getPanel());

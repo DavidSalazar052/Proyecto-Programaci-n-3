@@ -24,5 +24,14 @@ public class ContPac {
         service_Paciente.instance().create(e);
         model.setCurrent(new Paciente());
         model.setPacientes(service_Paciente.instance().getpacientes());
+
+    }
+    //limpiar
+    public void clear(){
+        model.setCurrent(new Paciente());
+    }
+
+    public void delete(String text) {
+       //No implementado todavia
     }
 }

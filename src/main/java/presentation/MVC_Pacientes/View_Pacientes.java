@@ -26,15 +26,59 @@ public class View_Pacientes implements PropertyChangeListener {
     ModelPac model;
 
     public View_Pacientes() {
+        //BOTON GUARDAR
         BotonGuardar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    Paciente p = take();
-                    controller.create(p);
-                    JOptionPane.showMessageDialog(Jpanel,"Persona ingresada");
+                if(validate()) {
+                    try {
+                        Paciente p = take();
+                        controller.create(p);
+                        JOptionPane.showMessageDialog(Jpanel, "Persona ingresada");
+                        controller.clear();
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(Jpanel, ex.getMessage());
+                    }
+                }
+            }
+        });
+        //BOTON LIMPIAR
+        BotonLimpiar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    controller.clear();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(Jpanel,ex.getMessage());
+                }
+            }
+        });
+        //BOTON BORRAR (NO IMPLEMENTADO TODAVIA)
+        BotonBorrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (validate()){
+                    try {
+                        controller.delete(id_JTextField.getText());
+                        JOptionPane.showMessageDialog(Jpanel, "Persona eliminada");
+                        controller.clear();
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(Jpanel, ex.getMessage());
+                    }
+                }
+            }
+        });
+
+        //BOTON BUSCAR
+        BotonBuscar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(validate_buscar()) {
+                    try {
+                        controller.read(NombreBusqueda_JtextField.getText());
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(Jpanel, ex.getMessage(), "Información", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }
             }
         });
@@ -60,17 +104,60 @@ public class View_Pacientes implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         switch(evt.getPropertyName()) {
-            case ModelPac.CURRENT:{
-                id_JTextField.setText(model.getCurrent().getId());
-                nombrePaciente_JtextField.setText(model.getCurrent().getNombre());
-                break;
-            }
-            case ModelPac.PACIENTES:{
-                int [] cols = {TableModel_Paciente.ID,TableModel_Paciente.NOMBRE,TableModel_Paciente.APELLIDO,TableModel_Paciente.ROL};
+
+            case ModelPac.PACIENTES:
+                int[] cols = {TableModel_Paciente.ID,TableModel_Paciente.NOMBRE,
+                               TableModel_Paciente.APELLIDO,TableModel_Paciente.ROL};
                 TablaDePaciente.setModel(new TableModel_Paciente(cols, model.getPacientes()));
                 break;
-            }
+
+            case ModelPac.CURRENT:
+                id_JTextField.setText(model.getCurrent().getId());
+                nombrePaciente_JtextField.setText(model.getCurrent().getNombre());
+                id_JTextField.setBackground(null);
+                nombrePaciente_JtextField.setBackground(null);
+
         }
+        this.Jpanel.revalidate();
+    }
+    //VALIDATE
+    private boolean validate (){
+       boolean valid = true;
+       if (id_JTextField.getText().isEmpty()){
+           valid = false;
+           id_JTextField.setBackground(Color.RED);
+           JOptionPane.showMessageDialog(Jpanel,"ID necesario");
+           id_JTextField.setBackground(null);
+           id_JTextField.setToolTipText("ID necesario");
+       }
+       if (nombrePaciente_JtextField.getText().isEmpty()){
+              valid = false;
+              nombrePaciente_JtextField.setBackground(Color.RED);
+              JOptionPane.showMessageDialog(Jpanel,"Nombre necesario");
+              nombrePaciente_JtextField.setBackground(null);
+              nombrePaciente_JtextField.setToolTipText("Nombre necesario");
+       }else {
+              nombrePaciente_JtextField.setBackground(null);
+              id_JTextField.setBackground(null);
+       }
+       return valid;
+
+    }
+    private boolean validate_buscar(){
+        boolean valid = true;
+
+        if (NombreBusqueda_JtextField.getText().isEmpty()){
+            valid = false;
+            NombreBusqueda_JtextField.setBackground(Color.RED);
+            JOptionPane.showMessageDialog(Jpanel,"ID necesario");
+            NombreBusqueda_JtextField.setBackground(null);
+            NombreBusqueda_JtextField.setToolTipText("ID necesario");
+        }
+        else {
+        nombrePaciente_JtextField.setBackground(null);
+        id_JTextField.setBackground(null);
+    }
+        return valid;
     }
 
 

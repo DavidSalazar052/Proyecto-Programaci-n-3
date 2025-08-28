@@ -7,6 +7,7 @@ import java.beans.PropertyChangeListener;
 import java.util.LinkedList;
 import java.util.List;
 
+
 public class ModelPac extends AbstractModel {
     Paciente current;
     List<Paciente> pacientes;
@@ -16,15 +17,17 @@ public class ModelPac extends AbstractModel {
 
     public ModelPac(){
         current = new Paciente();
-        pacientes = new LinkedList<>();
+        pacientes = new LinkedList<>(); //hice cambio
     }
 
     @Override
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         super.addPropertyChangeListener(listener);
         firePropertyChange(CURRENT);
+        firePropertyChange(PACIENTES);
     }
     public Paciente getCurrent(){return current;}
+
     public List<Paciente> getPacientes(){return pacientes;}
 
     public void setCurrent(Paciente current) {

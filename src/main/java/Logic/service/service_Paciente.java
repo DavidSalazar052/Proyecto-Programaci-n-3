@@ -6,7 +6,7 @@ import java.util.List;
 
 public class service_Paciente {
     private static service_Paciente theInstancePaciente;
-    public static service_Paciente instace(){
+    public static service_Paciente instance(){
         if(theInstancePaciente == null) theInstancePaciente = new service_Paciente();
         return theInstancePaciente;
     }
@@ -14,6 +14,37 @@ public class service_Paciente {
     private service_Paciente(){paciente = new data();}
 
     // =============== PACIENTES ===============
+    public void create(Paciente e) throws Exception {
+        Paciente result = paciente.getPacientes().stream()
+                .filter(i -> i.getId().equals(e.getId()))
+                .findFirst()
+                .orElse(null);
+
+        if (result == null) {
+            paciente.getPacientes().add(e);   // <- ahora guardas en ListaPacientes
+        } else {
+            throw new Exception("Persona ya existe");
+        }
+    }
+
+    public Paciente read(Paciente e) throws Exception {
+        Paciente result = paciente.getPacientes().stream()
+                .filter(i -> i.getId().equals(e.getId()))
+                .findFirst()
+                .orElse(null);
+
+        if (result != null) {
+            return result;
+        } else {
+            throw new Exception("Paciente no existe");
+        }
+    }
+
+    public List<Paciente> getpacientes() {
+        return paciente.getPacientes();   // <- lees de la misma lista
+    }
+
+  /*
     public void create(Paciente e) throws Exception {
         Paciente result = (Paciente) paciente.getUsuarios().stream()
                 .filter(i -> i.getId().equals(e.getId()))
@@ -39,5 +70,8 @@ public class service_Paciente {
         }
     }
 
-
+    public List<Paciente> getpacientes(){
+    return paciente.getPacientes();
+    }
+*/
 }
