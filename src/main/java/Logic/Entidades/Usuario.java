@@ -29,6 +29,4 @@ public abstract class Usuario {
 
     public abstract String getRol();
     public abstract void mostrarDatos(); // Al parecer en el ejemplo no se usa, pero por para probar en terminal
-
-
 }

@@ -3,13 +3,11 @@ package presentation.MVC_Pacientes;
 import Logic.Entidades.Paciente;
 import Logic.service.service_Paciente;
 
-import java.security.Provider;
-
-public class ContPac {
+public class Controller {
     View_Pacientes view;
-    ModelPac model;
+    Model model;
 
-    public ContPac(View_Pacientes view, ModelPac model){
+    public Controller(View_Pacientes view, Model model){
         this.view = view;
         this.model  = model;
         view.setModel(model);
@@ -24,7 +22,6 @@ public class ContPac {
         service_Paciente.instance().create(e);
         model.setCurrent(new Paciente());
         model.setPacientes(service_Paciente.instance().getpacientes());
-
     }
     //limpiar
     public void clear(){

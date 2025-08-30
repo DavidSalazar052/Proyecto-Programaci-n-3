@@ -5,7 +5,7 @@ public class Paciente extends Usuario {
         super(id, apellido, nombre, rol);
     }
     // No se necesita una contrasena para el paciente solo id para hacer consultas
-    public Paciente(){super();}
+    public Paciente(){super(); super.rol = "Paciente";}
     @Override
     public String getRol() {return rol;} // ROL PACIENTE
 

@@ -2,6 +2,7 @@ package Logic.service;
 import Logic.Entidades.Paciente;
 import data.data;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class service_Paciente {
@@ -32,7 +33,6 @@ public class service_Paciente {
                 .filter(i -> i.getId().equals(e.getId()))
                 .findFirst()
                 .orElse(null);
-
         if (result != null) {
             return result;
         } else {
@@ -41,37 +41,30 @@ public class service_Paciente {
     }
 
     public List<Paciente> getpacientes() {
-        return paciente.getPacientes();   // <- lees de la misma lista
+        return paciente.getPacientes();
     }
 
-  /*
-    public void create(Paciente e) throws Exception {
-        Paciente result = (Paciente) paciente.getUsuarios().stream()
-                .filter(i -> i.getId().equals(e.getId()))
-                .findFirst()
-                .orElse(null);
-        if (result == null) {
-            paciente.getUsuarios().add(e);
-        } else {
-            throw new Exception("Persona ya existe");
-        }
-    }
-
-    public Paciente read(Paciente e) throws Exception {
-        // la clase stream() permite recorrer la lista, con el metodo filter cumple la condicion
-        Paciente result = (Paciente) paciente.getUsuarios().stream()
-                .filter(i -> i.getId().equals(e.getId())) // funcion lambda de busqueda por ID
-                .findFirst() // encuentra el primer elemento que cumpla la condicion
-                .orElse(null); // si no encuentra nada, devuelve null
-        if (result != null) {
-            return result;
-        } else {
+    //DELETE
+    public void delete(Paciente e) throws Exception {
+        Paciente result = read(e);
+        if(result != null){
+            paciente.getPacientes().remove(result);
+        }else{
             throw new Exception("Paciente no existe");
         }
     }
-
-    public List<Paciente> getpacientes(){
-    return paciente.getPacientes();
+    //BUSQUEDA ESPECIFICA
+    public List<Paciente> search(String buscar) {
+        List<Paciente> pacientes = new LinkedList<>();
+        if (buscar != null) {
+            for (Paciente paciente : paciente.getPacientes()) {
+                if(paciente.getNombre().contains(buscar)) {
+                    pacientes.add(paciente);
+                }
+            }
+            return pacientes;
+        }else{
+            return pacientes;
+        }
     }
-*/
 }

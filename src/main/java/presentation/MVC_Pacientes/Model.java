@@ -1,6 +1,5 @@
 package presentation.MVC_Pacientes;
 import Logic.Entidades.Paciente;
-import Logic.Entidades.Usuario;
 import presentation.AbstractModel;
 
 import java.beans.PropertyChangeListener;
@@ -8,27 +7,24 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class ModelPac extends AbstractModel {
+public class Model extends AbstractModel {
     Paciente current;
     List<Paciente> pacientes;
 
     public static final String CURRENT = "current";
     public static final String PACIENTES = "pacientes";
 
-    public ModelPac(){
+    //CONSTRUCTOR
+    public Model(){
         current = new Paciente();
         pacientes = new LinkedList<>(); //hice cambio
     }
+    //GETTERS Y SETTERS
+    public Paciente getCurrent(){
+        return current;}
 
-    @Override
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        super.addPropertyChangeListener(listener);
-        firePropertyChange(CURRENT);
-        firePropertyChange(PACIENTES);
-    }
-    public Paciente getCurrent(){return current;}
-
-    public List<Paciente> getPacientes(){return pacientes;}
+    public List<Paciente> getPacientes(){
+        return pacientes;}
 
     public void setCurrent(Paciente current) {
         this.current = current;
@@ -36,6 +32,13 @@ public class ModelPac extends AbstractModel {
     }
     public void setPacientes(List<Paciente> pacientes) {
         this.pacientes = pacientes;
+        firePropertyChange(PACIENTES);
+    }
+    //LISTENER
+    @Override
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        super.addPropertyChangeListener(listener);
+        firePropertyChange(CURRENT);
         firePropertyChange(PACIENTES);
     }
 };

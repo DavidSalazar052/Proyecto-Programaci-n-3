@@ -13,7 +13,7 @@ public class data {
     // Entidades
     private List<Usuario> ListaUsuarios;
     //private List<Farmaceutico> ListaFarmaceuticos;
-    //private List<Medico> ListaMedicos;
+    private List<Medico> ListaMedicos;
     //private List<Administradores> ListaAdministradores;
     private List<Paciente> ListaPacientes;
 
@@ -28,7 +28,7 @@ public class data {
         //Entidades
         ListaUsuarios= new LinkedList<>();
         //ListaFarmaceuticos = new LinkedList<>();
-        //ListaMedicos = new LinkedList<>();
+        ListaMedicos = new LinkedList<>();
         //ListaAdministradores = new LinkedList<>();
         ListaPacientes = new LinkedList<>();
 
@@ -40,7 +40,7 @@ public class data {
     // Getters Entidades
     public List<Usuario> getUsuarios() {return ListaUsuarios;}
     // public List<Farmaceutico> getFarmaceuticos(){return farmaceuticos;}
-    // public List<Medico> getMedicos(){return medicos;}
+     public List<Medico> getMedicos(){return ListaMedicos;}
     // public List<Administradores> getAdministradores(){return administradores;}
      public List<Paciente> getPacientes(){return ListaPacientes;}
 

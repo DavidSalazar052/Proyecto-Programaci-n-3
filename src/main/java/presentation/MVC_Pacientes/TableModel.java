@@ -1,12 +1,11 @@
 package presentation.MVC_Pacientes;
 import Logic.Entidades.Paciente;
-import Logic.Entidades.Usuario;
 import presentation.AbstractTableModel;
 
 import java.util.List;
 
-public class TableModel_Paciente extends AbstractTableModel<Paciente> implements javax.swing.table.TableModel {
-    public TableModel_Paciente(int[] cols, List<Paciente> rows) {
+public class TableModel extends AbstractTableModel<Paciente> implements javax.swing.table.TableModel {
+    public TableModel(int[] cols, List<Paciente> rows) {
         super(cols, rows);
     }
 
